@@ -19,7 +19,7 @@ IF(BUILD_DOCUMENTATION)
         )
 
     ADD_CUSTOM_TARGET(doc
-        ALL DEPENDS html
+        DEPENDS html
         COMMENT "Generating API documentation with Doxygen"
         VERBATIM)
 
