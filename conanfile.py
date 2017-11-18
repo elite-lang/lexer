@@ -10,7 +10,7 @@ class lexerConan(ConanFile):
     default_options = "shared=False", "gtest:shared=False"
     generators = "cmake"
     build_policy = "missing"
-    requires = 'gtest/1.8.0@lasote/stable', 'cereal/1.2.1@lasote/vcpkg', 'estring/1.2.2@sunxfancy/stable'
+    requires = 'gtest/1.8.0@lasote/stable', 'cereal/1.2.2@sunxfancy/stable', 'estring/1.2.2@sunxfancy/ci'
     exports = "*"
     
     def build(self):
