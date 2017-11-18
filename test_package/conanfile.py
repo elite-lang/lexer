@@ -7,7 +7,7 @@ username = os.getenv("CONAN_USERNAME", "sunxfancy")
 
 class LibtestConan(ConanFile):
     settings = "os", "compiler", "build_type", "arch"
-    requires = "lexer/0.1.0@%s/%s" % (username, channel)
+    requires = "lexer/1.1.0@%s/%s" % (username, channel)
     generators = "cmake"
     build_policy = "missing"
 

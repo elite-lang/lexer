@@ -2,7 +2,7 @@ from conans import ConanFile, CMake, tools
 
 class lexerConan(ConanFile):
     name = "lexer"
-    version = "0.1.0"
+    version = "1.1.0"
     license = "<Put the package license here>"
     url = "<Package recipe repository url here, for issues about the package>"
     settings = "os", "compiler", "build_type", "arch"
