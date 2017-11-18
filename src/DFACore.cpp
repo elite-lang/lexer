@@ -1,5 +1,4 @@
 #include "DFACore.h"
-#include "DebugJson.h"
 
 
 void DFACore::getNextLine(int point) {
@@ -22,7 +21,6 @@ void DFACore::Init(DFA* _dfa, EquivalenceClass* _pEClass) {
 }
 
 Token* DFACore::Read() {
-    DebugJson& dj = DebugJson::getInst();
     state = 0;
     tokendata.clear();
 
@@ -39,7 +37,6 @@ Token* DFACore::Read() {
 
         // test the next state
         int nextstate = dfa->nextState(state, c);
-        if (DebugMsg::isDebug()) dj.addLine(line_point, row_point, state, nowdata);
 
         // if the state is stopped and the next is fault, get the token
         if (nextstate == -1) {
@@ -58,7 +55,6 @@ Token* DFACore::Read() {
                     t->col_num = line_point;
                     t->debug_line = nowline.c_str();
                     state = 0;
-                    if (DebugMsg::isDebug()) dj.addLine(line_point, row_point, state, nowdata);
                     return t;
                 }
             } else {
@@ -82,6 +78,5 @@ Token* DFACore::Read() {
         lastdata = nowdata;
     }
     t->type = 0;// 0 is the error type
-    if (DebugMsg::isDebug()) DebugJson::getInst().save();
     return t;
 }

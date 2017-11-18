@@ -34,7 +34,6 @@ private:
     Token* t = NULL; // 上一次的token
     EquivalenceClass* pEClass;
     void getNextLine(int point);
-
 };
 
 #endif // DFACORE_H

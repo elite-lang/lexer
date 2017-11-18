@@ -1,6 +1,5 @@
 
 #include "RuleManager.h"
-#include "DebugJson.h"
 #include <algorithm>
 #include <exception>
 #include <queue>
@@ -9,12 +8,10 @@
 
 RuleManager::RuleManager() {
 	pEClass = new EquivalenceClass();
-	debug_json = new DebugJson();
 }
 
 RuleManager::~RuleManager() {
 	delete pEClass;
-	delete debug_json;
 }
 
 int RuleManager::AddRule(const char* pName, const char* pPattern)
@@ -41,7 +38,6 @@ int RuleManager::AddRule(const char* pName, const char* pPattern)
 	else
 		ruleList.push_back(r);
 
-	debug_json->addRegex(pName, pPattern);
 	return ruleList.size();
 }
 

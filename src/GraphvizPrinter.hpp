@@ -3,13 +3,11 @@
 
 #include <ostream>
 #include "DFA.h"
-#include "DebugMsg.h"
 
 class GraphvizPrinter {
 public:
     static void print(DFA* dfa) {
-        if (!DebugMsg::isDebug()) return;
-        std::ostream& os = DebugMsg::lex_graphviz();
+        std::ostream& os = cerr;
         os << "digraph G {" << endl;
         os << "rankdir=LR" << endl;
         for (int i = 0; i < dfa->getStateSum(); ++i) {
@@ -20,7 +18,6 @@ public:
             }
         }
         os << "}" << endl;
-        DebugMsg::lex_graphviz_close();
     }
 
 

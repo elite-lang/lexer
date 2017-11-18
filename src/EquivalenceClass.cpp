@@ -14,7 +14,7 @@ EquivalenceClass::~EquivalenceClass()
 
 void EquivalenceClass::Add(CharSet &cset)
 {
-	auto charset = cset.charset; 
+	auto charset = cset.charset;
 	int xs = cset.negate ? -1 : 1;
 	eclass_sum++;
 
@@ -72,7 +72,7 @@ void EquivalenceClass::insert(echar_t p, echar_t q, int xs)
 	{
 		if (xs == 1)
 			equivalence_class[k] += eclass_sum;
-		else 
+		else
 			equivalence_class[k] -= eclass_sum;
 	}
 }

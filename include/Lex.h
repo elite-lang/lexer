@@ -12,6 +12,7 @@
 #include "LexInterface.h"
 #include <vector>
 #include <iostream>
+#include <string>
 
 using namespace std;
 
@@ -51,6 +52,8 @@ public:
     /// @brief get the rules sum
     virtual int getRuleSize();
 
+	virtual void loadTable(const char* file_data, size_t size);
+
     /// @brief init the main DFA core
     void InitCore();
 
@@ -68,7 +71,7 @@ private:
 	bool testequal(vector< int > , vector< int > );
     void addStopState(vector<int>&,int);
     void printvec(vector<int> v);
-
+	std::string cfg_filepath;
 	// ============================================
 	// member variable
 	// ============================================

@@ -1,4 +1,4 @@
-/* 
+/*
 * @Author: sxf
 * @Date:   2014-10-02 17:39:24
 * @Last Modified by:   sxf
@@ -12,10 +12,10 @@
 #include "EquivalenceClass.h"
 #include <Lex.h>
 
-using namespace std;  
-  
-#define tab "\t"  
-  
+using namespace std;
+
+#define tab "\t"
+
 EquivalenceClass* pEClass;
 
 Lex lex;
@@ -28,7 +28,6 @@ char* fileReader(const char* path) {
     file.open(path);//打开文件
     if(!file.is_open())
     {
-        printf("can not open BNF file!\n");
         return NULL;
     }
     file.seekg(0,ios::end);
@@ -42,7 +41,7 @@ char* fileReader(const char* path) {
 }
 
 int main()
-{    
+{
     lex.ReadConfig("lex.cfg");
     char* data = fileReader("test.txt");
     lex.Init(data);
@@ -51,8 +50,8 @@ int main()
         printf("%s \t %d \t row:%d \t col:%d\n",t->pToken,t->type,t->row_num,t->col_num);
         t = lex.Read();
     }
-    return 0;  
-}  
+    return 0;
+}
 
 void printTree(node* p,int n) {
 	if (p == 0) return;
@@ -61,7 +60,7 @@ void printTree(node* p,int n) {
 	printf("  |-- ");
 	if (p->type != 0)
 		printf("%c",p->type);
-	else 
+	else
 		cout << p->data->str.to_utf8();
 	printf("\n");
 
@@ -75,7 +74,7 @@ void printTree(node* p,int n) {
 // 	for (auto i = s.begin(); i != s.end(); ++i) {
 // 		cout << ((int)(*i).first) << '\t' << ((int)(*i).second.type) << '\t' << ((int)(*i).second.eclass) << endl;
 // 	}
-	
+
 // 	CharSet q(L"a-z01.");
 
 // 	EquivalenceClass ec;
@@ -96,7 +95,7 @@ void printTree(node* p,int n) {
 // 	delete c;
 
 // 	pEClass = new EquivalenceClass();
-	
+
 // 	Regex* re = new Regex(L"abc(dd|eb)*k", pEClass);
 
 // 	wcout << L"abc(dd|eb)*k" <<endl;
@@ -118,7 +117,7 @@ void printTree(node* p,int n) {
 // 	dfa2->setEClass(pEClass);
 // 	dfa2->Init(re2);
 // 	dfa2->print_func();
-	
+
 // 	/// for homework
 // 	delete pEClass;
 // 	pEClass = new EquivalenceClass();
@@ -130,7 +129,7 @@ void printTree(node* p,int n) {
 // 	homework_dfa1.Init(homework1);
 // 	homework_dfa1.print_func();
 // 	homework_dfa1.print_StateMap();
-	
+
 // 	delete pEClass;
 // 	pEClass = new EquivalenceClass();
 // 	Regex* homework2 = new Regex(L"1(1010*|1(010)*1)*0", pEClass);
@@ -141,7 +140,7 @@ void printTree(node* p,int n) {
 // 	homework_dfa2.Init(homework2);
 // 	homework_dfa2.print_func();
 // 	homework_dfa2.print_StateMap();
-	
+
 // 	delete pEClass;
 // 	pEClass = new EquivalenceClass();
 // 	Regex* homework3 = new Regex(L"1(0|1)*101", pEClass);
@@ -152,7 +151,7 @@ void printTree(node* p,int n) {
 // 	homework_dfa3.Init(homework3);
 // 	homework_dfa3.print_func();
 // 	homework_dfa3.print_StateMap();
-	
+
 // 	delete pEClass;
 // 	pEClass = new EquivalenceClass();
 // 	Regex* homework4 = new Regex(L"(0|10)*", pEClass);

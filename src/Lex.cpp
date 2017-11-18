@@ -8,8 +8,7 @@
 #include <iostream>
 #include <fstream>
 #include "RuleManager.h"
-#include "GraphvizPrinter.hpp"
-#include "DebugJson.h"
+#include <sstream>
 
 using namespace std;
 
@@ -29,13 +28,13 @@ void Lex::Init(const char* pData){
     // init the lex system
     this->pEClass = ruleManager->getEClass();
     combineAllDFA();
-	GraphvizPrinter::print(mainDFA);
+	string path = cfg_filepath+".lexsave";
+	mainDFA->Save(path.c_str());
     InitCore();
     if (pData != NULL) setData(pData);
 }
 
 int Lex::AddRule(const char* pName,const char* pattern){
-	DebugJson::getInst().addRegex(pName, pattern);
 	return ruleManager->AddRule(pName,pattern);
 }
 
@@ -62,6 +61,7 @@ const char* Lex::getRule(int id) {
 }
 
 bool Lex::ReadConfig(const char* path) {
+	cfg_filepath = path;
     fstream cfgFile;
     cfgFile.open(path);//打开文件
     if(!cfgFile.is_open())
@@ -87,6 +87,16 @@ bool Lex::ReadConfig(const char* path) {
 void Lex::InitCore() {
     core = new DFACore();
     core->Init(mainDFA,pEClass);
+}
+
+void Lex::loadTable(const char* file_data, size_t size) {
+	string str(file_data, size);
+	istringstream is(str, ios_base::in | ios_base::binary);
+	mainDFA = new DFA();
+	mainDFA->pEClass = new EquivalenceClass();
+	mainDFA->Load(is);
+	pEClass = mainDFA->pEClass;
+	InitCore();
 }
 
 

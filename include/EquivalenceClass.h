@@ -5,6 +5,7 @@
 #include "CharSet.h"
 #include <vector>
 #include <set>
+#include <cereal/types/vector.hpp>
 using namespace std;
 
 /*
@@ -35,6 +36,15 @@ private:
 
 	int eclass_sum = 0;
 	vector<unsigned short> equivalence_class;
+
+	friend class cereal::access;
+    template<class Archive>
+    void serialize(Archive &ar)
+    {
+        // serialize things by passing them to the archive
+        ar( eclass_sum,
+            CEREAL_NVP(equivalence_class));
+    }
 };
 
 

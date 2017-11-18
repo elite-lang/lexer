@@ -36,7 +36,6 @@ struct Rule{
 	}
 };
 
-class DebugJson;
 
 /****
 * It's a manager for rules and regex.
@@ -62,7 +61,6 @@ public:
 private:
 	std::vector<Rule> ruleList;
 	EquivalenceClass* pEClass;
-	DebugJson* debug_json;
 	/*
 	// add a new Lex rule
 	int AddRule(std::wstring pName, std::wstring pattern); // return the rule's id
